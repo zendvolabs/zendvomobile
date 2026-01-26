@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'features/auth/presentation/widgets/signup_success_dialog.dart';
 
 void main() {
   runApp(const MyApp());
@@ -112,10 +113,26 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          showDialog(
+            context: context,
+            barrierDismissible: true,
+            builder: (BuildContext context) {
+              return SignupSuccessDialog(
+                onProceed: () {
+                  Navigator.of(context).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Proceeding to dashboard...')),
+                  );
+                },
+              );
+            },
+          );
+        },
+        tooltip: 'Test Dialog',
+        label: const Text('Test Signup Dialog'),
+        icon: const Icon(Icons.approval),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

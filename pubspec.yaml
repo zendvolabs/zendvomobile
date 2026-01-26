@@ -37,6 +37,7 @@ dependencies:
   equatable: ^2.0.8
   flutter_bloc: ^9.1.1
   dartz: ^0.10.1
+  stellar_flutter_sdk: ^2.2.2
 
 dev_dependencies:
   flutter_test:
