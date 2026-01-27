@@ -11,4 +11,16 @@ class AppStrings {
   static const String help = "Help";
   static const String terms = "Terms & Conditions";
   static const String privacy = "Privacy Policy";
+
+  // Help Dialog Strings
+  static const String helpDialogTitle = "Didn't Get the Email?";
+  static const String helpBullet1 =
+      "Check your spam or junk folder – Sometimes, emails get filtered.";
+  static const String helpBullet2 =
+      "Wait a few minutes – It may take a moment to arrive.";
+  static const String helpBullet3 =
+      "Resend the email – Tap the button to send it again.";
+  static const String helpBullet4 =
+      "Check if your email is correct – Sometimes, we make mistakes.";
+  static const String close = "Close";
 }

@@ -9,6 +9,7 @@ import 'package:zendvo/core/utils/size_config.dart';
 import 'package:zendvo/features/auth/presentation/bloc/email_verification/email_verification_bloc.dart';
 import 'package:zendvo/features/auth/presentation/widgets/otp_input_widget.dart';
 import 'package:zendvo/core/widgets/app_button.dart';
+import 'package:zendvo/core/widgets/help_dialog.dart';
 
 class EmailVerificationScreen extends StatelessWidget {
   final String email;
@@ -190,7 +191,7 @@ class EmailVerificationScreen extends StatelessWidget {
         AppButton(
           height: 48,
           text: AppStrings.verifyButton,
-          onPressed: () {},
+          onPressed: () => HelpDialog.show(context),
           isLoading: state.status == EmailVerificationStatus.loading,
         ),
         const SizedBox(height: 16),
@@ -218,7 +219,10 @@ class EmailVerificationScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _footerLink(context, AppStrings.help),
+        GestureDetector(
+          onTap: () => HelpDialog.show(context),
+          child: _footerLink(context, AppStrings.help),
+        ),
         _footerDivider(context),
         _footerLink(context, AppStrings.terms),
         _footerDivider(context),
