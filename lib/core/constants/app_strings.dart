@@ -11,4 +11,10 @@ class AppStrings {
   static const String help = "Help";
   static const String terms = "Terms & Conditions";
   static const String privacy = "Privacy Policy";
+
+  // Signup Success Dialog Strings
+  static const String signupSuccessTitle = "Signup successful";
+  static const String signupSuccessMessage =
+      "start receiving surprises from the people who matter.";
+  static const String signupSuccessButton = "Proceed to dashboard";
 }
