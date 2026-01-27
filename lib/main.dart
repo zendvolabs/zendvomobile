@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'features/auth/presentation/widgets/signup_success_dialog.dart';
+import 'package:zendvo/core/constants/app_theme.dart';
+import 'package:zendvo/core/router/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -134,6 +135,12 @@ class _MyHomePageState extends State<MyHomePage> {
         label: const Text('Test Signup Dialog'),
         icon: const Icon(Icons.approval),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'Zendvo',
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.lightTheme,
+      routerConfig: AppRouter.router,
     );
   }
 }
