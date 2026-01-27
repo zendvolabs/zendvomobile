@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zendvo/features/auth/presentation/pages/email_verification_screen.dart';
+import 'package:zendvo/features/auth/presentation/pages/signup_success_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -13,6 +14,21 @@ class AppRouter {
           final email =
               state.uri.queryParameters['email'] ?? 'jo***3@gmail.com';
           return EmailVerificationScreen(email: email);
+        },
+      ),
+      GoRoute(
+        path: '/signup-success',
+        name: 'signup-success',
+        builder: (context, state) {
+          return SignupSuccessScreen(
+            onProceedToDashboard: () {
+              // TODO: Navigate to dashboard
+              // context.go('/dashboard');
+            },
+            onDismiss: () {
+              // TODO: Handle dismiss action
+            },
+          );
         },
       ),
       // Add more routes here as your app grows
