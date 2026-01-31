@@ -23,4 +23,21 @@ class AppStrings {
   static const String helpBullet4 =
       "Check if your email is correct – Sometimes, we make mistakes.";
   static const String close = "Close";
+
+  // Registration Strings
+  static const String createAccountTitle = "Create an account";
+  static const String createAccountSubtitle = "To start receiving cash gifts";
+  static const String fullNameLabel = "Full Name";
+  static const String fullNamePlaceholder = "John Eze";
+  static const String phoneNumberLabel = "Phone Number";
+  static const String phoneNumberPlaceholder = "81 123 456 78";
+  static const String emailAddressLabel = "Email address";
+  static const String emailAddressPlaceholder = "john123@gmail.com";
+  static const String passwordLabel = "Password";
+  static const String confirmPasswordLabel = "Confirm Password";
+  static const String passwordHint =
+      "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.";
+  static const String createAccountButton = "Create Account";
+  static const String alreadyHaveAccount = "Already have an account? ";
+  static const String logIn = "Log in";
 }

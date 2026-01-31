@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:zendvo/core/constants/app_colors.dart';
 import 'package:zendvo/core/constants/app_spacing.dart';
@@ -31,7 +33,7 @@ class HelpDialog extends StatelessWidget {
               icon: const Icon(Icons.close, color: AppColors.lightTextBody),
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
-            ),
+            ), 
             const SizedBox(height: AppSpacing.m),
             Center(
               child: Container(

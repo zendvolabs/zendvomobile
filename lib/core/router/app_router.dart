@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zendvo/features/auth/presentation/pages/email_verification_screen.dart';
+import 'package:zendvo/features/auth/presentation/pages/register_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: '/email-verification',
+    initialLocation: '/register',
     routes: [
+      GoRoute(
+        path: '/register',
+        name: 'register',
+        builder: (context, state) => const RegisterPage(),
+      ),
       GoRoute(
         path: '/email-verification',
         name: 'email-verification',
