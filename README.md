@@ -1,4 +1,5 @@
 # Zendvo - Unlock the Magic of Surprise 🎁
+www.zendvo.com
 
 Zendvo is a cross-platform mobile application built with Flutter for **iOS and Android**. It enables users to send cash gifts that remain completely hidden until a predetermined unlock date and time. By using the Stellar blockchain, Zendvo transforms digital money transfers into memorable experiences filled with mystery and anticipation.
 
