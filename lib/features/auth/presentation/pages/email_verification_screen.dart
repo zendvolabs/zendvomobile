@@ -37,42 +37,48 @@ class EmailVerificationScreen extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(state.errorMessage ?? "Verification Failed"),
+                    backgroundColor: AppColors.error,
                   ),
                 );
               }
             },
             builder: (context, state) {
-              return Stack(
-                children: [
-                  Padding(
-                    padding: AppSpacing.screenPadding,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: SizeConfig.getHeight(2)),
-                        _buildHeader(),
-                        SizedBox(height: SizeConfig.getHeight(5)),
-                        _buildInstructionalText(context),
-                        SizedBox(height: SizeConfig.getHeight(4)),
-                        OtpInputWidget(
-                          onCompleted: (otp) {
-                            context.read<EmailVerificationBloc>().add(
-                              VerifyOTPEvent(otp),
-                            );
-                          },
-                          hasError:
-                              state.status == EmailVerificationStatus.failure,
+              return Padding(
+                padding: AppSpacing.screenPadding,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: SizeConfig.getHeight(2)),
+                            _buildLogo(),
+                            SizedBox(height: SizeConfig.getHeight(5)),
+                            _buildInstructionalText(context),
+                            SizedBox(height: SizeConfig.getHeight(4)),
+                            OtpInputWidget(
+                              onCompleted: (otp) {
+                                context.read<EmailVerificationBloc>().add(
+                                  VerifyOTPEvent(otp),
+                                );
+                              },
+                              hasError:
+                                  state.status ==
+                                  EmailVerificationStatus.failure,
+                            ),
+                            SizedBox(height: SizeConfig.getHeight(3)),
+                            _buildTimerRow(context, state),
+                          ],
                         ),
-                        SizedBox(height: SizeConfig.getHeight(3)),
-                        _buildTimerRow(context, state),
-                        const Spacer(),
-                        _buildActionButtons(context, state),
-                        SizedBox(height: SizeConfig.getHeight(2)),
-                        _buildFooter(context),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                    _buildActionButtons(context, state),
+                    SizedBox(height: SizeConfig.getHeight(3)),
+                    _buildFooterLinks(context),
+                    SizedBox(height: SizeConfig.getHeight(2)),
+                  ],
+                ),
               );
             },
           ),
@@ -81,27 +87,25 @@ class EmailVerificationScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildLogo() {
     return Row(
       children: [
         Container(
-          width: 40,
-          height: 40,
+          width: 32,
+          height: 32,
           decoration: BoxDecoration(
             color: AppColors.primary,
             borderRadius: BorderRadius.circular(8),
           ),
-          child: const Center(
-            child: Icon(Icons.vignette, color: Colors.white, size: 24),
-          ),
+          child: const Icon(Icons.vignette, color: Colors.white, size: 20),
         ),
-        const SizedBox(width: 12),
+        const SizedBox(width: 8),
         const Text(
-          "Zendvo",
+          'Zendvo',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: AppColors.darkBackground,
+            color: AppColors.primary,
           ),
         ),
       ],
@@ -124,8 +128,8 @@ class EmailVerificationScreen extends StatelessWidget {
         Text(
           "${AppStrings.verifyEmailSubtitle} $email",
           style: TextStyle(
-            fontSize: 12,
-            color: AppColors.getHeadingTextColor(context),
+            fontSize: 14,
+            color: AppColors.getBodyTextColor(context).withValues(alpha: 0.8),
             height: 1.5,
           ),
         ),
@@ -143,42 +147,38 @@ class EmailVerificationScreen extends StatelessWidget {
       '0',
     );
 
-    return Center(
-      child: GestureDetector(
-        onTap: state.canResend
-            ? () {
-                context.read<EmailVerificationBloc>().add(
-                  const ResendOTPEvent(),
-                );
-              }
-            : null,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              AppStrings.resendCode,
-              style: TextStyle(
-                fontSize: 16,
-                color: state.canResend
-                    ? AppColors.primary
-                    : AppColors.getBodyTextColor(context),
-                fontWeight: state.canResend
-                    ? FontWeight.bold
-                    : FontWeight.normal,
-              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: state.canResend
+              ? () {
+                  context.read<EmailVerificationBloc>().add(
+                    const ResendOTPEvent(),
+                  );
+                }
+              : null,
+          child: Text(
+            AppStrings.resendCode,
+            style: TextStyle(
+              fontSize: 14,
+              color: state.canResend
+                  ? AppColors.primary
+                  : AppColors.getHeadingTextColor(context),
+              fontWeight: state.canResend ? FontWeight.bold : FontWeight.w600,
             ),
-            if (!state.canResend)
-              Text(
-                "$minutes:$seconds",
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.primary,
-                ),
-              ),
-          ],
+          ),
         ),
-      ),
+        if (!state.canResend)
+          Text(
+            "$minutes:$seconds",
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primary,
+            ),
+          ),
+      ],
     );
   }
 
@@ -187,27 +187,32 @@ class EmailVerificationScreen extends StatelessWidget {
     EmailVerificationState state,
   ) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         AppButton(
-          height: 48,
-          text: AppStrings.verifyButton,
-          onPressed: () => HelpDialog.show(context),
+          height: AppSpacing.buttonHeight,
+          text: AppStrings
+              .createAccountButton, // Design shows 'Create Account' here
           isLoading: state.status == EmailVerificationStatus.loading,
+          onPressed: () {
+            // Trigger OTP verification from bloc if we needed a manual button tap
+            // But usually OTP is verified auto on completion. If they tap this,
+            // you might want to force verification or show an error if incomplete.
+            // For now, let's keep it as is, or trigger verification if we had the state's OTP
+          },
         ),
-        const SizedBox(height: 16),
-        TextButton(
-          onPressed: state.canResend
-              ? () {
-                  context.read<EmailVerificationBloc>().add(
-                    const ResendOTPEvent(),
-                  );
-                }
-              : null,
+        const SizedBox(height: 24),
+        GestureDetector(
+          onTap: () {
+            // Navigate or show help
+            HelpDialog.show(context);
+          },
           child: Text(
             AppStrings.lowEmailAction,
-            style: TextStyle(
-              color: state.canResend ? AppColors.primary : Colors.grey,
-              fontWeight: FontWeight.w500,
+            style: const TextStyle(
+              color: AppColors.primary,
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
@@ -215,40 +220,46 @@ class EmailVerificationScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFooter(BuildContext context) {
+  Widget _buildFooterLinks(BuildContext context) {
+    final style = TextStyle(
+      fontSize: 13,
+      fontWeight: FontWeight.w500,
+      color: AppColors.getInactiveBorderColor(context),
+    );
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         GestureDetector(
           onTap: () => HelpDialog.show(context),
-          child: _footerLink(context, AppStrings.help),
+          child: Text(AppStrings.help, style: style),
         ),
-        _footerDivider(context),
-        _footerLink(context, AppStrings.terms),
-        _footerDivider(context),
-        _footerLink(context, AppStrings.privacy),
+        _buildDivider(context),
+        GestureDetector(
+          onTap: () {
+            // TODO: Open Terms
+          },
+          child: Text(AppStrings.terms, style: style),
+        ),
+        _buildDivider(context),
+        GestureDetector(
+          onTap: () {
+            // TODO: Open Privacy Policy
+          },
+          child: Text(AppStrings.privacy, style: style),
+        ),
       ],
     );
   }
 
-  Widget _footerLink(BuildContext context, String text) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 12,
-        color: AppColors.getBodyTextColor(context).withOpacity(0.6),
-      ),
-    );
-  }
-
-  Widget _footerDivider(BuildContext context) {
+  Widget _buildDivider(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s),
       child: Text(
-        "|",
+        '|',
         style: TextStyle(
-          fontSize: 12,
-          color: AppColors.getBodyTextColor(context).withOpacity(0.4),
+          fontSize: 13,
+          color: AppColors.getInactiveBorderColor(context),
         ),
       ),
     );
