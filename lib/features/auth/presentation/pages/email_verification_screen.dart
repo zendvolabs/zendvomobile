@@ -9,7 +9,7 @@ import 'package:zendvo/core/utils/size_config.dart';
 import 'package:zendvo/features/auth/presentation/bloc/email_verification/email_verification_bloc.dart';
 import 'package:zendvo/features/auth/presentation/widgets/otp_input_widget.dart';
 import 'package:zendvo/core/widgets/app_button.dart';
-import 'package:zendvo/core/widgets/help_dialog.dart';
+import 'package:zendvo/core/widgets/help_dialog/help_dialog.dart';
 
 class EmailVerificationScreen extends StatelessWidget {
   final String email;
