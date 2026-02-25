@@ -27,6 +27,11 @@ class GiftCreationFormState extends GiftCreationState {
   final String message;
   final bool isLookingUpRecipient;
 
+  final String? senderImage;
+  final String senderName;
+  final String senderEmail;
+  final String senderConfirmEmail;
+
   const GiftCreationFormState({
     this.phone = '',
     this.countryCode = '+234',
@@ -38,6 +43,10 @@ class GiftCreationFormState extends GiftCreationState {
     this.unlockTime,
     this.message = '',
     this.isLookingUpRecipient = false,
+    this.senderImage,
+    this.senderName = '',
+    this.senderEmail = '',
+    this.senderConfirmEmail = '',
   });
 
   GiftCreationFormState copyWith({
@@ -51,6 +60,10 @@ class GiftCreationFormState extends GiftCreationState {
     String? unlockTime,
     String? message,
     bool? isLookingUpRecipient,
+    String? senderImage,
+    String? senderName,
+    String? senderEmail,
+    String? senderConfirmEmail,
   }) {
     return GiftCreationFormState(
       phone: phone ?? this.phone,
@@ -63,6 +76,10 @@ class GiftCreationFormState extends GiftCreationState {
       unlockTime: unlockTime ?? this.unlockTime,
       message: message ?? this.message,
       isLookingUpRecipient: isLookingUpRecipient ?? this.isLookingUpRecipient,
+      senderImage: senderImage ?? this.senderImage,
+      senderName: senderName ?? this.senderName,
+      senderEmail: senderEmail ?? this.senderEmail,
+      senderConfirmEmail: senderConfirmEmail ?? this.senderConfirmEmail,
     );
   }
 
@@ -95,6 +112,10 @@ class GiftCreationFormState extends GiftCreationState {
     unlockTime,
     message,
     isLookingUpRecipient,
+    senderImage,
+    senderName,
+    senderEmail,
+    senderConfirmEmail,
   ];
 }
 

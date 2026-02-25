@@ -101,3 +101,41 @@ class GiftSubmitted extends GiftCreationEvent {
 class ProceedGiftPayment extends GiftCreationEvent {
   const ProceedGiftPayment();
 }
+
+// ── Sender Details Events ────────────────────────────────────────────────────
+
+/// Triggered when the sender uploads an image
+class SenderImageChanged extends GiftCreationEvent {
+  final String imagePath;
+  const SenderImageChanged(this.imagePath);
+
+  @override
+  List<Object?> get props => [imagePath];
+}
+
+/// Triggered when the sender types their name
+class SenderNameChanged extends GiftCreationEvent {
+  final String name;
+  const SenderNameChanged(this.name);
+
+  @override
+  List<Object?> get props => [name];
+}
+
+/// Triggered when the sender types their email
+class SenderEmailChanged extends GiftCreationEvent {
+  final String email;
+  const SenderEmailChanged(this.email);
+
+  @override
+  List<Object?> get props => [email];
+}
+
+/// Triggered when the sender confirms their email
+class SenderConfirmEmailChanged extends GiftCreationEvent {
+  final String email;
+  const SenderConfirmEmailChanged(this.email);
+
+  @override
+  List<Object?> get props => [email];
+}

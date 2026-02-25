@@ -57,6 +57,16 @@ class AppStrings {
   static const String messagePlaceholder = "I dey feel your hustle";
   static const String continueButton = "Continue";
 
+  // Sender Details Screen
+  static const String senderDetailTitle = "Sender detail";
+  static const String senderDetailSubtitle =
+      "Please provide your details as a sender";
+  static const String uploadImageLabel = "Upload your image(Optional)";
+  static const String tapToUpload = "Tap to upload";
+  static const String maxImageSize = "Max image size 10MB";
+  static const String confirmEmailAddressLabel = "confirm email address";
+  static const String giftButtonPrefix = "Gift ";
+
   // Review Gift Details Screen
   static const String reviewGiftTitle = "Review Gift details";
   static const String reviewGiftSubtitle =

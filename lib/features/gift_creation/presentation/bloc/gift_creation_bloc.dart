@@ -21,6 +21,10 @@ class GiftCreationBloc extends Bloc<GiftCreationEvent, GiftCreationState> {
     on<MessageChanged>(_onMessageChanged);
     on<GiftSubmitted>(_onGiftSubmitted);
     on<ProceedGiftPayment>(_onProceedGiftPayment);
+    on<SenderImageChanged>(_onSenderImageChanged);
+    on<SenderNameChanged>(_onSenderNameChanged);
+    on<SenderEmailChanged>(_onSenderEmailChanged);
+    on<SenderConfirmEmailChanged>(_onSenderConfirmEmailChanged);
   }
 
   GiftCreationFormState get _form => state is GiftCreationFormState
@@ -153,5 +157,35 @@ class GiftCreationBloc extends Bloc<GiftCreationEvent, GiftCreationState> {
 
     await Future.delayed(const Duration(seconds: 1));
     emit(const GiftCreationSuccess(giftCode: 'GIFT-CONFIRMED'));
+  }
+
+  // ── Sender Details Handlers ──────────────────────────────────────────────────
+
+  void _onSenderImageChanged(
+    SenderImageChanged event,
+    Emitter<GiftCreationState> emit,
+  ) {
+    emit(_form.copyWith(senderImage: event.imagePath));
+  }
+
+  void _onSenderNameChanged(
+    SenderNameChanged event,
+    Emitter<GiftCreationState> emit,
+  ) {
+    emit(_form.copyWith(senderName: event.name));
+  }
+
+  void _onSenderEmailChanged(
+    SenderEmailChanged event,
+    Emitter<GiftCreationState> emit,
+  ) {
+    emit(_form.copyWith(senderEmail: event.email));
+  }
+
+  void _onSenderConfirmEmailChanged(
+    SenderConfirmEmailChanged event,
+    Emitter<GiftCreationState> emit,
+  ) {
+    emit(_form.copyWith(senderConfirmEmail: event.email));
   }
 }
