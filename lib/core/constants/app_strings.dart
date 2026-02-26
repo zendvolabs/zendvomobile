@@ -105,4 +105,12 @@ class AppStrings {
   static const String forgotPasswordTitle = "Forgot Password";
   static const String forgotPasswordSubtitle =
       "Provide the email address linked to your Zendvo account to reset your password and login";
+
+  // Login Screen
+  static const String loginTitle = "Login";
+  static const String loginSubtitle = "To start receiving cash gifts";
+  static const String forgotPasswordLink = "Forgot password?";
+  static const String loginButton = "Login";
+  static const String notRegisteredYet = "Not registered yet? ";
+  static const String signUp = "Sign Up";
 }
