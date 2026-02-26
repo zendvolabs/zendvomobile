@@ -100,4 +100,9 @@ class AppStrings {
       "Create a new secure password for future access to your Zendvo account.";
   static const String enterNewPasswordLabel = "Enter new password";
   static const String createNewPasswordButton = "Create new password";
+
+  // Forgot Password Screen
+  static const String forgotPasswordTitle = "Forgot Password";
+  static const String forgotPasswordSubtitle =
+      "Provide the email address linked to your Zendvo account to reset your password and login";
 }
