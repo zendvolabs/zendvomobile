@@ -34,7 +34,6 @@ class _LoginView extends StatelessWidget {
   void _handleStateChanges(BuildContext context, LoginState state) {
     if (state is LoginSuccess) {
       // TODO: Navigate to home/dashboard screen
-      // Example: context.go('/home');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Login successful!'),
@@ -80,7 +79,6 @@ class _LoginView extends StatelessWidget {
                       isLoading: state is LoginLoading,
                       onPressed: isValid && state is! LoginLoading
                           ? () {
-                              // Form validation is handled by BLoC state
                               context.read<LoginBloc>().add(LoginSubmitted());
                             }
                           : null,

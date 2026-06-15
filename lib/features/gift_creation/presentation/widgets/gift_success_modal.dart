@@ -42,7 +42,6 @@ class GiftSuccessModal extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Header Row
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -71,12 +70,10 @@ class GiftSuccessModal extends StatelessWidget {
             Divider(color: AppColors.getInactiveBorderColor(context)),
             const SizedBox(height: AppSpacing.xl),
 
-            // Success Icon
             _buildSuccessIcon(),
 
             const SizedBox(height: AppSpacing.xl),
 
-            // Title
             Text(
               AppStrings.giftSentSuccessfully,
               style: TextStyle(
@@ -89,7 +86,6 @@ class GiftSuccessModal extends StatelessWidget {
 
             const SizedBox(height: AppSpacing.s),
 
-            // Subtitle
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s),
               child: RichText(
@@ -115,7 +111,6 @@ class GiftSuccessModal extends StatelessWidget {
 
             const SizedBox(height: AppSpacing.xl),
 
-            // Button
             AppButton(text: AppStrings.close, onPressed: onClose),
           ],
         ),
@@ -130,7 +125,6 @@ class GiftSuccessModal extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // Background faint circle
           Container(
             width: 70,
             height: 70,
@@ -139,11 +133,9 @@ class GiftSuccessModal extends StatelessWidget {
               shape: BoxShape.circle,
             ),
           ),
-          // Decorative dots (confetti)
           ...List.generate(8, (index) {
             final angle = (index * 45) * 3.14159 / 180;
             return Transform.translate(
-              // Using 40 radius for the particles
               offset: Offset(40 * math.cos(angle), 40 * math.sin(angle)),
               child: Container(
                 width: index % 2 == 0 ? 4 : 3,
@@ -157,7 +149,6 @@ class GiftSuccessModal extends StatelessWidget {
               ),
             );
           }),
-          // Main circle
           Container(
             width: 44,
             height: 44,

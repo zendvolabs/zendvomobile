@@ -47,7 +47,6 @@ class PhoneInputField extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Country code picker
             GestureDetector(
               onTap: onCountryCodeTap,
               child: Container(
@@ -82,7 +81,6 @@ class PhoneInputField extends StatelessWidget {
             ),
             const SizedBox(width: 10),
 
-            // Phone number input
             Expanded(
               child: SizedBox(
                 height: 56,

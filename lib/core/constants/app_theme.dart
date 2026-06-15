@@ -11,9 +11,7 @@ class AppTheme {
         seedColor: const Color(0xFF5E49E2),
         primary: const Color(0xFF5E49E2),
       ),
-      textTheme: const TextTheme(
-        // You can customize specific text styles here if needed
-      ),
+      textTheme: const TextTheme(),
     );
   }
 

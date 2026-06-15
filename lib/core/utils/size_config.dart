@@ -27,17 +27,13 @@ class SizeConfig {
     safeBlockSizeVertical = (screenHeight - _safeAreaVertical) / 100;
   }
 
-  // Get responsive width
   static double getWidth(double percentage) => blockSizeHorizontal * percentage;
 
-  // Get responsive height
   static double getHeight(double percentage) => blockSizeVertical * percentage;
 
-  // Get safe area responsive width
   static double getSafeWidth(double percentage) =>
       safeBlockSizeHorizontal * percentage;
 
-  // Get safe area responsive height
   static double getSafeHeight(double percentage) =>
       safeBlockSizeVertical * percentage;
 }

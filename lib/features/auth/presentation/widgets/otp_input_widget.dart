@@ -40,7 +40,6 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
       });
     }
 
-    // Auto focus first field
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNodes[0].requestFocus();
     });
@@ -59,7 +58,6 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
 
   void _onChanged(int index, String value) {
     if (value.length > 1) {
-      // Handle paste
       _handlePaste(value);
       return;
     }

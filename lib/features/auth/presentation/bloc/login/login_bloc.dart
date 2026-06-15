@@ -33,15 +33,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async {
     if (!_form.isFormValid) return;
 
-    final cachedForm = _form;
     emit(LoginLoading());
 
     try {
       // TODO: Replace with real authentication/repository call
-      // Example: await authRepository.login(cachedForm.email, cachedForm.password);
       await Future.delayed(const Duration(seconds: 2));
 
-      // Simulate success - replace with actual user entity
       emit(LoginSuccess('user_entity_placeholder'));
     } catch (e) {
       emit(LoginError(

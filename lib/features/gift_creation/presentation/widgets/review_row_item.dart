@@ -44,7 +44,6 @@ class ReviewRowItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (isMultiLine) ...[
-          // Label on its own row, value below
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Column(
@@ -57,7 +56,6 @@ class ReviewRowItem extends StatelessWidget {
             ),
           ),
         ] else ...[
-          // Label and value side-by-side
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Row(
