@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:zendvo/core/constants/app_colors.dart';
 import 'package:zendvo/core/constants/app_spacing.dart';
 import 'package:zendvo/core/constants/app_strings.dart';
@@ -33,13 +34,7 @@ class _LoginView extends StatelessWidget {
 
   void _handleStateChanges(BuildContext context, LoginState state) {
     if (state is LoginSuccess) {
-      // TODO: Navigate to home/dashboard screen
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Login successful!'),
-          backgroundColor: AppColors.success,
-        ),
-      );
+      context.go('/dashboard');
     } else if (state is LoginError) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
