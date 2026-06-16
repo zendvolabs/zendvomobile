@@ -113,4 +113,10 @@ class AppStrings {
   static const String loginButton = "Login";
   static const String notRegisteredYet = "Not registered yet? ";
   static const String signUp = "Sign Up";
+
+  // Signup Success Modal
+  static const String signupSuccessTitle = "Signup successful";
+  static const String signupSuccessDescription =
+      "start receiving surprises from the people who matter.";
+  static const String signupSuccessCta = "Proceed to dashboard";
 }
