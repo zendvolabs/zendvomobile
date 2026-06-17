@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:zendvo/core/constants/app_colors.dart';
 
-class LoginHeader extends StatelessWidget {
-  const LoginHeader({super.key});
+/// Reusable branding header for authentication screens.
+class AuthHeader extends StatelessWidget {
+  const AuthHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +21,12 @@ class LoginHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 12),
-        const Text(
+        Text(
           "Zendvo",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: AppColors.lightTextHeading,
+            color: AppColors.getHeadingTextColor(context),
           ),
         ),
       ],
