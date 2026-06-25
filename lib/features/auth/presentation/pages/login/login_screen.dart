@@ -10,7 +10,7 @@ import 'package:zendvo/features/auth/presentation/bloc/login/login_event.dart';
 import 'package:zendvo/features/auth/presentation/bloc/login/login_state.dart';
 import 'widgets/login_footer.dart';
 import 'widgets/login_form.dart';
-import 'widgets/login_header.dart';
+import 'package:zendvo/features/auth/presentation/widgets/auth_header.dart';
 import 'widgets/login_title_section.dart';
 
 /// Login screen for user authentication.
@@ -65,7 +65,7 @@ class _LoginView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: SizeConfig.getHeight(2)),
-                const LoginHeader(),
+                const AuthHeader(),
                 SizedBox(height: SizeConfig.getHeight(4)),
                 const LoginTitleSection(),
                 SizedBox(height: SizeConfig.getHeight(4)),
