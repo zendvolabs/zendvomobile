@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zendvo/features/auth/presentation/pages/forgot_password/forgot_password_screen.dart';
 import 'package:zendvo/features/auth/presentation/pages/login/login_screen.dart';
+import 'package:zendvo/features/auth/presentation/pages/create_new_password/create_new_password_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -25,6 +26,11 @@ class AppRouter {
             child: Text('Verify Email Screen (Placeholder)'),
           ),
         ),
+      ),
+      GoRoute(
+        path: '/create-new-password',
+        name: 'create-new-password',
+        builder: (context, state) => const CreateNewPasswordScreen(),
       ),
     ],
     errorBuilder: (context, state) => Scaffold(
